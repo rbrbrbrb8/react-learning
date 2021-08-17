@@ -16,7 +16,37 @@
   \********************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n\n\nfunction App() {\n  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(\"div\", null, \"Hello World ddd\");\n}\n\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (App);\n\n//# sourceURL=webpack://myreact/./src/App.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n/* harmony import */ var _components_MembersInfo__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/MembersInfo */ \"./src/components/MembersInfo.js\");\n\n\n\nfunction App() {\n  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(\"div\", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(\"p\", null, \"Members\"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(\"div\", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_components_MembersInfo__WEBPACK_IMPORTED_MODULE_1__.default, null)));\n}\n\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (App);\n\n//# sourceURL=webpack://myreact/./src/App.js?");
+
+/***/ }),
+
+/***/ "./src/components/AddMemberForm.js":
+/*!*****************************************!*\
+  !*** ./src/components/AddMemberForm.js ***!
+  \*****************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n\n\nconst AddMemberForm = () => {\n  const submitName = memberName => {\n    console.log(memberName);\n  };\n\n  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(\"div\", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(\"form\", {\n    onSubmit: () => submitName(memberName)\n  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(\"input\", {\n    type: \"text\",\n    placeholder: \"enter member name\"\n  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(\"input\", {\n    type: \"submit\"\n  })));\n};\n\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (AddMemberForm);\n\n//# sourceURL=webpack://myreact/./src/components/AddMemberForm.js?");
+
+/***/ }),
+
+/***/ "./src/components/MemberList.js":
+/*!**************************************!*\
+  !*** ./src/components/MemberList.js ***!
+  \**************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n\n\nfunction MemberList(props) {\n  const {\n    members\n  } = props;\n  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(\"div\", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(\"ul\", null, members.map((member, index) => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(\"li\", {\n    key: index\n  }, member))));\n}\n\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (MemberList);\n\n//# sourceURL=webpack://myreact/./src/components/MemberList.js?");
+
+/***/ }),
+
+/***/ "./src/components/MembersInfo.js":
+/*!***************************************!*\
+  !*** ./src/components/MembersInfo.js ***!
+  \***************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n/* harmony import */ var _MemberList__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./MemberList */ \"./src/components/MemberList.js\");\n/* harmony import */ var _AddMemberForm__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./AddMemberForm */ \"./src/components/AddMemberForm.js\");\n\n\n\nconst test = {\n  name: 'brezner',\n  info: {\n    age: 19,\n    birthdate: '20/12/2001'\n  }\n};\n\nconst MembersInfo = () => {\n  const {\n    name,\n    info: {\n      age\n    }\n  } = test;\n  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(\"div\", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(\"h2\", null, age), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_MemberList__WEBPACK_IMPORTED_MODULE_1__.default, {\n    members: ['barry allen', 'bruce wayne', 'peter parker']\n  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_AddMemberForm__WEBPACK_IMPORTED_MODULE_2__.default, null));\n};\n\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (MembersInfo);\n\n//# sourceURL=webpack://myreact/./src/components/MembersInfo.js?");
 
 /***/ }),
 

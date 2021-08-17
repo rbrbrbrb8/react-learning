@@ -1,10 +1,16 @@
 import React from 'react';
+import MembersInfo from './components/MembersInfo';
+
 
 function App() {
   return (
     <div>
-      Hello World
+      <p>Members</p>
+      <div>
+        <MembersInfo/>
+      </div>
     </div>
+
   );
 }
 
