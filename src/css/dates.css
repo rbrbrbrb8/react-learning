@@ -1,0 +1,15 @@
+.single-date{
+  padding: 100px 150px;
+  border:2px solid lightskyblue;
+  text-decoration: none;
+}
+
+.single-date-container{
+  display: inline-flex;
+  margin:0;
+}
+
+.calendar{
+  display: flex;
+  
+}
