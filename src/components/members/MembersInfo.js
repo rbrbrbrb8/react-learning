@@ -19,7 +19,7 @@ const MembersInfo = () => {
   return (
     <div>
       <h2>{age}</h2>
-      <MemberList members={['barry allen','bruce wayne','peter parker']}/>
+      <MemberList/>
       <AddMemberForm/>
     </div>
   );

@@ -1,14 +1,21 @@
 import React from 'react';
-import MembersInfo from './components/MembersInfo';
-
+import { Switch, Route } from 'react-router-dom';
+import Calendear from './components/dates/Calendear';
+import DateInfo from './components/dates/DateInfo';
 
 function App() {
   return (
     <div>
-      <p>Members</p>
-      <div>
-        <MembersInfo/>
-      </div>
+      <Switch>
+        <Route path='/DateInfo'>
+          <DateInfo/>
+        </Route>
+        <Route path='/'>
+          <div>
+            <Calendear/>
+          </div>
+        </Route>
+      </Switch>
     </div>
 
   );
