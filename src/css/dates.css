@@ -1,15 +1,11 @@
 .single-date{
-  padding: 100px 150px;
-  border:2px solid lightskyblue;
+  /* border:2px solid lightskyblue; */
   text-decoration: none;
 }
 
 .single-date-container{
+  width: 100%;
+  height: 190px;
   display: inline-flex;
   margin:0;
-}
-
-.calendar{
-  display: flex;
-  
 }
