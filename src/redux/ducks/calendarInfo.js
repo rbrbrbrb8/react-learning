@@ -36,6 +36,10 @@ const getDaysInfo = (newMonthIndex) => {
   }
 }
 
+const buildAnotherMonth = monthIndex => {
+  
+}
+
 const initialState = {
   month: 'August',
   monthIndex: 7, //always month number - 1
@@ -49,9 +53,9 @@ const initialState = {
 export default (state = initialState, action) => {
   switch (action.type) {
     case MONTH_FORWARD: {
-      const check = state.monthIndex === 11;
-      const newMonthIndex = check ? 0 : state.monthIndex + 1;
-      const newYear = check ? state.year : state.year + 1;
+      const isDecember = state.monthIndex === 11;
+      const newMonthIndex = isDecember ? 0 : state.monthIndex + 1;
+      const newYear = isDecember ? state.year + 1 : state.year ;
       const daysToAdd = getDaysInfo(newMonthIndex);
       const newStartIndex = state.startIndex + daysToAdd;
       const daysToAddArr = buildNewArr(daysToAdd);
@@ -65,7 +69,20 @@ export default (state = initialState, action) => {
       }
     }
     case MONTH_BACKWARD:{
-      return ;
+      const isJanuary = state.monthIndex === 0;
+      const newMonthIndex = isJanuary ? 11 : state.monthIndex - 1;
+      const newYear = isJanuary ? state.year - 1 : state.year;
+      const daysToSub = getDaysInfo(newMonthIndex);
+      const newStartIndex = state.startIndex - daysToSub;
+      const daysToSubArr = buildNewArr(daysToSub);
+      return {
+        month: months[newMonthIndex],
+        monthIndex: newMonthIndex,
+        year: newYear,
+        startIndex:newStartIndex,
+        endIndex:newStartIndex +35,
+        daysArr:daysToSubArr.concat(state.daysArr)
+      }
     }
 
 
