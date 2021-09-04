@@ -27,6 +27,7 @@
     "@fontsource/roboto": "^4.5.0",
     "@material-ui/core": "^4.12.3",
     "@material-ui/icons": "^4.11.2",
+    "@mobiscroll/react": "https://npm.mobiscroll.com/@mobiscroll/react-trial/-/react-trial-5.9.0.tgz",
     "axios": "^0.21.1",
     "express": "^4.17.1",
     "path": "^0.12.7",

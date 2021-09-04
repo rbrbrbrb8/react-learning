@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import SingleDate from './SingleDate';
+import SingleDate from './singleDate/SingleDate';
 import { Grid } from '@material-ui/core';
 import '../../css/dates.css'
 import CalendarHead from './CalendarHead';

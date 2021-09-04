@@ -1,6 +1,6 @@
 import { Grid } from '@material-ui/core';
 import React from 'react';
-import SingleDate from './SingleDate';
+import SingleDate from './singleDate/SingleDate';
 
 const CalendarRow = (props) => {
   const {sevenChunk} = props
