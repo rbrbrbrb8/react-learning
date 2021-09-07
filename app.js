@@ -19,7 +19,7 @@ const port = process.env.PORT || 3000;
 
 app.use(express.static(path.resolve(__dirname, 'build')));
 
-app.get('/',function (req, res) {
+app.use('/',function (req, res) {
   return res.sendFile(path.resolve(__dirname, 'src', 'index.html'));
 });
 

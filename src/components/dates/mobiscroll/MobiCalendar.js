@@ -3,11 +3,12 @@ import '@mobiscroll/react/dist/css/mobiscroll.min.css';
 import { Eventcalendar, getJson, toast, localeHe } from '@mobiscroll/react';
 import axios from 'axios';
 import '../../../css/mobiCal.css'
+import { useHistory } from 'react-router';
 
 function MobiCalendar() {
 
-  const [myEvents, setEvents] = React.useState([]);
-
+  const [myEvents, setEvents] = useState([]);
+  const history = useHistory();
   useEffect(() => {
     axios.get('/api/getEvents').then(res => {
       console.log(res.data);
@@ -19,7 +20,13 @@ function MobiCalendar() {
     // toast({
     //   message: event.event.title
     // });
-    console.log(event.date.toLocaleDateString('en-GB'));
+    history.push({
+      pathname:'/dateInfo',
+      state:{
+        currentEvent:event.event,
+        totalEvents:event.inst.props.data
+      },
+    });
   }, []);
 
   const view = useMemo(() => {
