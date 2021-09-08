@@ -2,12 +2,15 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Card, Grid } from '@material-ui/core';
 import Chart from 'react-apexcharts';
+const he = require('apexcharts/dist/locales/he.json');
 const DonutGraph = (props) => {
   const options = {
     chart: {
       id: "basic-donut",
       width:'100%',
-      height:'100%'
+      height:'100%',
+      locales:[he],
+      defaultLocale:'he'
     },
     labels: ['מומלצים', 'לא מומלצים', 'אין ציון'],
     dataLabels: {
@@ -49,7 +52,7 @@ const DonutGraph = (props) => {
   console.log(total);
   return (
     // <Link to="" className="single-date">
-    <Grid item>
+    <Grid item className="donut-graph-container">
         <Chart
           series={series}
           type="donut"

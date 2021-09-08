@@ -6,3 +6,8 @@
 .column-chart-div{
   letter-spacing: normal;
 }
+
+.donut-graph-container{
+  height: 100%;
+  width: 100%;
+}

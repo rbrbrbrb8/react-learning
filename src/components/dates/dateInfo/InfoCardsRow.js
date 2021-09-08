@@ -6,7 +6,7 @@ const InfoCardsRow = (props) => {
   const { info } = props;
   return (
     // <Link to="" className="single-date">
-    <Grid item container spacing={2} direction="row">
+    <Grid item container spacing={2} direction="row-reverse">
       {info.map((singleCardInfo, i) => (
         <Grid item key={i} xs={6} lg={3}>
           <Card className="single-card-info">

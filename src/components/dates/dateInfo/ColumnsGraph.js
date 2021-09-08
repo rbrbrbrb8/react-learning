@@ -12,7 +12,10 @@ const ColumnsGraph = (props) => {
       id: 'basic-bar',
       type: 'bar',
       locales: [he],
-      defaultLocale: 'he'
+      defaultLocale: 'he',
+      toolbar:{
+        show:false
+      }
     },
     plotOptions: {
       bar: {
@@ -24,7 +27,7 @@ const ColumnsGraph = (props) => {
         ['לבדיקה'],
         ['בדיק'],
         ['מבדקון'],
-        ['בדיקה','צורת'],
+        ['צורת בדיקה'],
         ['לבדוק'],
         ['כמובן'],
         ['בטוטאל','המקף','לבדיקת'],
@@ -32,16 +35,17 @@ const ColumnsGraph = (props) => {
         ['טסטינג'],
         ['אנציקלופדי'],
         ['רימון'],
-        ['סטיגמה', 'בדיקה'],
+        ['בדיקה','סטיגמה'],
         ['בדיקות','סטגימה'],
-        ['בדיקת', 'שנה'],
+        ['שנה','בדיקת'],
         ['פריז'],
         ['זהב"ם']
       ],
       labels: {
         rotate: 0,
         style: {
-          direction: 'rtl',
+          cssClass:'column-chart-label',
+          fontSize:'10px'
         }
       }
     },

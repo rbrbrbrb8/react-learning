@@ -41,7 +41,7 @@ const DateInfo = (props) => {
   return ( //consider seperating grid to DateDashboard component
     <div>
       <p>this is Test Date Info</p>
-      <Grid container direction="row" spacing={2}>
+      <Grid container direction="row-reverse" spacing={2}>
         <Grid item container direction="column" xs={8}>
           <Grid item>
             <InfoCardsRow info={info}></InfoCardsRow>
