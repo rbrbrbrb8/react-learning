@@ -54,7 +54,6 @@ const ColumnsGraph = (props) => {
     },
 
   }
-  console.log('testttt');
   return (
     // <Link to="" className="single-date">
     <Grid item>

@@ -11,3 +11,7 @@
   height: 100%;
   width: 100%;
 }
+
+.select-event-form-control{
+  min-width: 130px !important;
+}
