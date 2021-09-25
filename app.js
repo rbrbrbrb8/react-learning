@@ -3,14 +3,43 @@ const path = require('path');
 
 const app = express();
 
-const events = [{
-  "start":"06/09/2021",
-  "allDay":true,
-  "title":"כנס כלל חמן",
-  "color":"#37bbe4"
-}]
+const events = [
+  {
+    start: "2021-09-06",
+    title: "כנס כלל חמן",
+    backgroundColor: "#37bbe4",
+    borderColor:"#37bbe4",
+    classNames:['kenes','klal-haman'],
+    extendedProps:{
+      selectValue:'klal'
+    }
+  },
+  {
+    start: "2021-09-09",
+    allDay: true,
+    title: "כנס גאמא",
+    backgroundColor: "#e84135",
+    borderColor:"#e84135",
+    classNames:['kenes','gamma'],
+    extendedProps:{
+      selectValue:'gamma'
+    }
+  },
+  {
+    start: "2021-09-09",
+    allDay: true,
+    title: "כנס שחקים",
+    backgroundColor: "#45f7ee",
+    borderColor:"#45f7ee",
+    classNames:['kenes','shakim'],
+    extendedProps:{
+      selectValue:'shakim'
+    }
+  }
+  //to determine event color on hover, subtract from RED 7, GREEN 24 and BLUE 29
+]
 
-app.get('/api/getEvents',(req,res) => {
+app.get('/api/getEvents', (req, res) => {
   console.log('caught request')
   res.send(events);
 })
@@ -19,7 +48,7 @@ const port = process.env.PORT || 3000;
 
 app.use(express.static(path.resolve(__dirname, 'build')));
 
-app.use('/',function (req, res) {
+app.use('/', function (req, res) {
   return res.sendFile(path.resolve(__dirname, 'src', 'index.html'));
 });
 

@@ -1,7 +1,9 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 import DateInfo from './components/dates/DateInfo';
-import MobiCalendar from './components/dates/mobiscroll/MobiCalendar';
+import EventsCalendar from './components/dates/fullCalendar/EventsCalendar';
+import './css/calendar.css'
+
 
 function App() {
   return (
@@ -12,7 +14,7 @@ function App() {
           <DateInfo/>
         </Route>
         <Route path='/'>
-            <MobiCalendar/>
+            <EventsCalendar/>
         </Route>
       </Switch>
     </div>

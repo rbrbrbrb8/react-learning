@@ -2,7 +2,6 @@ import React, { useState, useEffect, useCallback, useMemo } from 'react';
 import '@mobiscroll/react/dist/css/mobiscroll.min.css';
 import { Eventcalendar, getJson, toast, localeHe } from '@mobiscroll/react';
 import axios from 'axios';
-import '../../../css/mobiCal.css'
 import { useHistory } from 'react-router';
 
 function MobiCalendar() {

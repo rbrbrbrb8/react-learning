@@ -9,10 +9,11 @@ import '../../css/dateInfo.css';
 import { Beenhere, DoneAll, Dvr, Event, Grade, Assignment } from '@material-ui/icons';
 import { FormControl, Select, InputLabel } from '@material-ui/core';
 import { useSelector, useDispatch } from 'react-redux';
-import { prat, delta, adama, kafbet, hebrew} from '../../redux/ducks/currentEvent';
+import {changeKenes} from '../../redux/ducks/currentEvent';
 
 
 const DateInfo = (props) => {
+  const location = useLocation();
   const info = [{
     num: 60,
     type: 'מזומנים',
@@ -35,31 +36,11 @@ const DateInfo = (props) => {
   }
   ];
   const dispatch = useDispatch()
-  const location = useLocation();
   const currentEvent = useSelector(state => state.currentEvent.currentEvent);
   const handleCurrentEventChange = (event) => {
     const eventName = event.target.value;
-    switch (eventName) {
-      case 'prat':
-        dispatch(prat());    
-        break;
-    
-      case 'delta':
-        dispatch(delta());
-        break;
-
-      case 'kafbet':
-        dispatch(kafbet());
-        break;
-
-      case 'adama':
-        dispatch(adama());
-        break;
-
-      case 'hebrew':
-        dispatch(hebrew());
-        break;
-    }
+    console.log(event.target.value);
+    dispatch(changeKenes(eventName));
     
   };
   return ( //consider seperating grid to DateDashboard component
@@ -69,12 +50,13 @@ const DateInfo = (props) => {
         <Select
           labelId='select-event-label'
           id='select-event'
-          value={currentEvent}
+          value={currentEvent || ''}
           onChange={handleCurrentEventChange}
           label='Event'
         >
-          <MenuItem value='prat'>כנס כלל חמן</MenuItem>
-          <MenuItem value='delta'>כנס גאמא</MenuItem>
+          <MenuItem value='klal'>כנס כלל חמן</MenuItem>
+          <MenuItem value='gamma'>כנס גאמא</MenuItem>
+          <MenuItem value='shakim'>כנס שחקים</MenuItem>
         </Select>
       </FormControl>
       <Grid container direction="row-reverse" spacing={2}>

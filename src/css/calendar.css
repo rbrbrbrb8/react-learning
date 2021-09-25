@@ -1,0 +1,32 @@
+body{
+  font-family: sans-serif;
+}
+.fc th{
+  background-color: royalblue;
+  color: white;
+}
+div.fc-list-day-cushion{
+  background-color: royalblue !important;
+}
+
+button:focus{
+  outline: none !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+.kenes:hover{
+  cursor: pointer;
+}
+
+.klal-haman:hover{
+  background-color: #30a3c7 !important;
+}
+
+.gamma:hover{
+  background-color: #e12918 !important;
+}
+
+.shakim:hover{
+  background-color: #3edfd1 !important;
+}

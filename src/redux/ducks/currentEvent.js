@@ -1,29 +1,11 @@
-const PRAT = 'prat';
-const DELTA = 'delta';
-const ADAMA = 'adama';
-const HEBREW = 'hebrew';
-const KAFBET = 'kafbet';
 
-export const prat = () => ({
-  type: PRAT
+const CHANGE_KENES = 'change_kenes';
+
+
+export const changeKenes = (kenesName) => ({
+  type:CHANGE_KENES,
+  kenesName:kenesName
 });
-
-export const delta = () => ({
-  type: DELTA
-});
-
-export const adama = () => ({
-  type: ADAMA
-});
-
-export const hebrew = () => ({
-  type: HEBREW
-});
-
-export const kafbet = () => ({
-  type: KAFBET
-});
-
 
 const initialState = {
   currentEvent: ''
@@ -31,21 +13,9 @@ const initialState = {
 
 export default (state = initialState, action) => {
   switch (action.type) {
-    case PRAT:
-      return {currentEvent:'prat'};
-
-    case DELTA:
-      return {currentEvent:'delta'};
-
-    case ADAMA:
-      return {currentEvent:'כנס אדמה'};
-
-    case HEBREW:
-      return {currentEvent:'כנס עברית'};
-
-    case KAFBET:
-      return {currentEvent:'כנס כ"ב'};
-    
+    case CHANGE_KENES:
+      console.log(`kenesName:${action.kenesName} `);
+      return {...state,currentEvent:action.kenesName}
     default:
       return state;
   }
