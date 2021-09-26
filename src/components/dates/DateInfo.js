@@ -37,6 +37,7 @@ const DateInfo = (props) => {
   ];
   const dispatch = useDispatch()
   const currentEvent = useSelector(state => state.currentEvent.currentEvent);
+  const dateEventsObj = useSelector(state => state.dateEvents.eventsData);
   const handleCurrentEventChange = (event) => {
     const eventName = event.target.value;
     console.log(event.target.value);
@@ -54,9 +55,9 @@ const DateInfo = (props) => {
           onChange={handleCurrentEventChange}
           label='Event'
         >
-          <MenuItem value='klal'>כנס כלל חמן</MenuItem>
-          <MenuItem value='gamma'>כנס גאמא</MenuItem>
-          <MenuItem value='shakim'>כנס שחקים</MenuItem>
+          {Object.keys(dateEventsObj).map(eventKey => (
+            <MenuItem value={eventKey} key={eventKey}>{dateEventsObj[eventKey].displayName}</MenuItem>
+          ))}
         </Select>
       </FormControl>
       <Grid container direction="row-reverse" spacing={2}>
@@ -65,11 +66,11 @@ const DateInfo = (props) => {
             <InfoCardsRow info={info}></InfoCardsRow>
           </Grid>
           <Grid item>
-            <ColumnsGraph></ColumnsGraph>
+            <ColumnsGraph colorScheme={dateEventsObj[currentEvent].colorScheme}></ColumnsGraph>
           </Grid>
         </Grid>
         <Grid item xs={4}>
-          <DonutGraph></DonutGraph>
+          <DonutGraph colorScheme={dateEventsObj[currentEvent].colorScheme}></DonutGraph>
         </Grid>
       </Grid>
     </div>

@@ -4,6 +4,8 @@ import { Card, Grid } from '@material-ui/core';
 import Chart from 'react-apexcharts';
 const he = require('apexcharts/dist/locales/he.json');
 const ColumnsGraph = (props) => {
+  const { colorScheme } = props;
+  console.log(`colorScheme: ${colorScheme}`);
   const series = [{
     data: [26, 26, 18, 10, 0, 1, 20, 12, 7, 5, 10, 9, 11, 13, 3, 8]
   }];
@@ -13,10 +15,11 @@ const ColumnsGraph = (props) => {
       type: 'bar',
       locales: [he],
       defaultLocale: 'he',
-      toolbar:{
-        show:false
+      toolbar: {
+        show: false
       }
     },
+    colors: colorScheme,
     plotOptions: {
       bar: {
         distributed: true,
@@ -30,22 +33,22 @@ const ColumnsGraph = (props) => {
         ['צורת בדיקה'],
         ['לבדוק'],
         ['כמובן'],
-        ['בטוטאל','המקף','לבדיקת'],
+        ['בטוטאל', 'המקף', 'לבדיקת'],
         ['סגנון', 'בדיקה'],
         ['טסטינג'],
         ['אנציקלופדי'],
         ['רימון'],
-        ['בדיקה','סטיגמה'],
-        ['בדיקות','סטגימה'],
-        ['שנה','בדיקת'],
+        ['בדיקה', 'סטיגמה'],
+        ['בדיקות', 'סטגימה'],
+        ['שנה', 'בדיקת'],
         ['פריז'],
         ['זהב"ם']
       ],
       labels: {
         rotate: 0,
         style: {
-          cssClass:'column-chart-label',
-          fontSize:'10px'
+          cssClass: 'column-chart-label',
+          fontSize: '10px'
         }
       }
     },

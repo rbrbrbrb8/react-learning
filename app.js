@@ -1,6 +1,6 @@
 const express = require('express');
 const path = require('path');
-
+const colorSchemes = require('./utils/colorSchemes');
 const app = express();
 
 const events = [
@@ -11,7 +11,8 @@ const events = [
     borderColor:"#37bbe4",
     classNames:['kenes','klal-haman'],
     extendedProps:{
-      selectValue:'klal'
+      selectValue:'klal',
+      colorScheme:colorSchemes.klal
     }
   },
   {
@@ -22,7 +23,8 @@ const events = [
     borderColor:"#e84135",
     classNames:['kenes','gamma'],
     extendedProps:{
-      selectValue:'gamma'
+      selectValue:'gamma',
+      colorScheme:colorSchemes.gamma
     }
   },
   {
@@ -33,7 +35,20 @@ const events = [
     borderColor:"#45f7ee",
     classNames:['kenes','shakim'],
     extendedProps:{
-      selectValue:'shakim'
+      selectValue:'shakim',
+      colorScheme:colorSchemes.shakim
+    }
+  },
+  {
+    start: "2021-09-09",
+    allDay: true,
+    title: "כנס לוחמה",
+    backgroundColor: "#55c91a",
+    borderColor:"#55c91a",
+    classNames:['kenes','lohama'],
+    extendedProps:{
+      selectValue:'lohama',
+      colorScheme:colorSchemes.lohama
     }
   }
   //to determine event color on hover, subtract from RED 7, GREEN 24 and BLUE 29

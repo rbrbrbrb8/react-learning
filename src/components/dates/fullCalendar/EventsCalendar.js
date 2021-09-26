@@ -1,4 +1,4 @@
-import React, { useState,useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import FullCalendar from '@fullcalendar/react';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import heLocale from '@fullcalendar/core/locales/he';
@@ -8,6 +8,7 @@ import axios from 'axios';
 import { useHistory } from 'react-router';
 import { useDispatch } from 'react-redux';
 import { changeKenes } from '../../../redux/ducks/currentEvent';
+import { setDateEvents } from '../../../redux/ducks/dateEvents';
 const calendarConfig = require('./calendarConfig');
 
 
@@ -21,33 +22,47 @@ const EventsCalendar = function (props) {
       setEvents(res.data);
     })
   }, [])
-  const getEventsByDate = function(dateStr){
+  const getEventsByDate = function (dateStr) {
     return myEvents.filter(event => event.start === dateStr);
   }
-  const dateClick = function(info){
-    const dateEvents = getEventsByDate(info.dateStr)
-    history.push({
-      pathname:'/dateInfo',
-      state:{
-        currentEvent:dateEvents[0],
-        totalEvents:dateEvents
-      },
-    });
-    
+  const getDateEventsObj = events => {
+    return events.reduce((eventsObj, event) => {
+      eventsObj[event.extendedProps.selectValue] = {
+        displayName: event.title,
+        colorScheme:event.extendedProps.colorScheme
+      };
+      return eventsObj;
+    }, {});
   }
-  const eventClick = function(eventClickInfo){
-    console.log(eventClickInfo.event.extendedProps.selectValue);
-    dispatch(changeKenes(eventClickInfo.event.extendedProps.selectValue))
+  const dateClick = function (info) {
+    const dateEvents = getEventsByDate(info.dateStr);
+    console.log(dateEvents);
+    if (dateEvents.length) {
+      dispatch(changeKenes(dateEvents[0].extendedProps.selectValue));
+      dispatch(setDateEvents(getDateEventsObj(dateEvents)));
+      history.push({
+        pathname: '/dateInfo',
+        state: {
+          currentEvent: dateEvents[0],
+          totalEvents: dateEvents
+        },
+      });
+    }
+  }
+  const eventClick = function (eventClickInfo) {
+    const dateEvents = getEventsByDate(eventClickInfo.event.startStr);
+    dispatch(changeKenes(eventClickInfo.event.extendedProps.selectValue));
+    dispatch(setDateEvents(getDateEventsObj(dateEvents)));
     history.push({
-      pathname:'/dateInfo',
+      pathname: '/dateInfo',
     });
   }
-  
+
   return (
     <>
       <FullCalendar
         className='calendar'
-        plugins={[dayGridPlugin,listPlugin,interactionPlugin]}
+        plugins={[dayGridPlugin, listPlugin, interactionPlugin]}
         initialView='dayGridMonth'
         locale={heLocale}
         height={650}

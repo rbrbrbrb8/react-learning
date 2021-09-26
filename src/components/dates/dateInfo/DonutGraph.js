@@ -4,6 +4,8 @@ import { Card, Grid } from '@material-ui/core';
 import Chart from 'react-apexcharts';
 const he = require('apexcharts/dist/locales/he.json');
 const DonutGraph = (props) => {
+  const {colorScheme} = props;
+  const fixedColorScheme = [colorScheme[colorScheme.length-1],colorScheme[1],'#a6ada8']
   const options = {
     chart: {
       id: "basic-donut",
@@ -12,6 +14,7 @@ const DonutGraph = (props) => {
       locales:[he],
       defaultLocale:'he'
     },
+    colors:fixedColorScheme,
     labels: ['מומלצים', 'לא מומלצים', 'אין ציון'],
     dataLabels: {
       enabled: true,
