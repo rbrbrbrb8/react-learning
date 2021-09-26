@@ -5,7 +5,6 @@ import Chart from 'react-apexcharts';
 const he = require('apexcharts/dist/locales/he.json');
 const ColumnsGraph = (props) => {
   const { colorScheme } = props;
-  console.log(`colorScheme: ${colorScheme}`);
   const series = [{
     data: [26, 26, 18, 10, 0, 1, 20, 12, 7, 5, 10, 9, 11, 13, 3, 8]
   }];

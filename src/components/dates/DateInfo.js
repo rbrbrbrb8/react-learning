@@ -1,49 +1,38 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { useLocation } from 'react-router';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Grid, MenuItem } from '@material-ui/core';
 import InfoCardsRow from './dateInfo/InfoCardsRow';
 import DonutGraph from './dateInfo/DonutGraph';
 import ColumnsGraph from './dateInfo/ColumnsGraph';
 import '../../css/dateInfo.css';
-import { Beenhere, DoneAll, Dvr, Event, Grade, Assignment } from '@material-ui/icons';
 import { FormControl, Select, InputLabel } from '@material-ui/core';
 import { useSelector, useDispatch } from 'react-redux';
 import {changeKenes} from '../../redux/ducks/currentEvent';
-
+import info from './dummyInfo/info';
 
 const DateInfo = (props) => {
-  const location = useLocation();
-  const info = [{
-    num: 60,
-    type: 'מזומנים',
-    icon: <Event style={{ fontSize: 60 }} />
-  },
-  {
-    num: 52,
-    type: 'התייצבו',
-    icon: <Beenhere style={{ fontSize: 60 }} />
-  },
-  {
-    num: 26,
-    type: 'בעלי ציון',
-    icon: <Grade style={{ fontSize: 60 }} />
-  },
-  {
-    num: 26,
-    type: 'בעלי שאלון',
-    icon: <Dvr style={{ fontSize: 60, display: "inline" }} />
-  }
-  ];
-  const dispatch = useDispatch()
-  const currentEvent = useSelector(state => state.currentEvent.currentEvent);
-  const dateEventsObj = useSelector(state => state.dateEvents.eventsData);
+  const getFromSessionStorage = key => {
+    return sessionStorage.getItem(key);
+  };
+
+  const dispatch = useDispatch();
+  const currentEvent = useSelector(state => ((Object.keys(state.currentEvent.currentEvent)).length ? state.currentEvent.currentEvent : getFromSessionStorage('currentEvent')));
+  const dateEventsObj = useSelector(state => ((Object.keys(state.dateEvents.eventsData)).length ? state.dateEvents.eventsData : JSON.parse(getFromSessionStorage('dateEvents'))));
+  console.log(`current event: ${currentEvent}`);
   const handleCurrentEventChange = (event) => {
     const eventName = event.target.value;
     console.log(event.target.value);
     dispatch(changeKenes(eventName));
-    
   };
+
+  useEffect(()=>{
+    sessionStorage.setItem('dateEvents',JSON.stringify(dateEventsObj));
+  },[dateEventsObj]);
+
+  useEffect(()=>{
+    sessionStorage.setItem('currentEvent',currentEvent);
+  },[currentEvent]);
+
   return ( //consider seperating grid to DateDashboard component
     <div>
       <FormControl variant='outlined' className="select-event-form-control">
@@ -63,7 +52,7 @@ const DateInfo = (props) => {
       <Grid container direction="row-reverse" spacing={2}>
         <Grid item container direction="column" xs={8}>
           <Grid item>
-            <InfoCardsRow info={info}></InfoCardsRow>
+            <InfoCardsRow info={info} colorScheme={dateEventsObj[currentEvent].colorScheme}></InfoCardsRow>
           </Grid>
           <Grid item>
             <ColumnsGraph colorScheme={dateEventsObj[currentEvent].colorScheme}></ColumnsGraph>

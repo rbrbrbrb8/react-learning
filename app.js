@@ -7,8 +7,8 @@ const events = [
   {
     start: "2021-09-06",
     title: "כנס כלל חמן",
-    backgroundColor: "#37bbe4",
-    borderColor:"#37bbe4",
+    backgroundColor: "#2878f7",
+    borderColor:"#2878f7",
     classNames:['kenes','klal-haman'],
     extendedProps:{
       selectValue:'klal',
@@ -31,8 +31,8 @@ const events = [
     start: "2021-09-09",
     allDay: true,
     title: "כנס שחקים",
-    backgroundColor: "#45f7ee",
-    borderColor:"#45f7ee",
+    backgroundColor: "#049c94",
+    borderColor:"#049c94",
     classNames:['kenes','shakim'],
     extendedProps:{
       selectValue:'shakim',
@@ -43,8 +43,8 @@ const events = [
     start: "2021-09-09",
     allDay: true,
     title: "כנס לוחמה",
-    backgroundColor: "#55c91a",
-    borderColor:"#55c91a",
+    backgroundColor: "#228b22",
+    borderColor:"#228b22",
     classNames:['kenes','lohama'],
     extendedProps:{
       selectValue:'lohama',

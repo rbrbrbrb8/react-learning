@@ -11,7 +11,6 @@ import { changeKenes } from '../../../redux/ducks/currentEvent';
 import { setDateEvents } from '../../../redux/ducks/dateEvents';
 const calendarConfig = require('./calendarConfig');
 
-
 const EventsCalendar = function (props) {
   const dispatch = useDispatch();
   const history = useHistory();
@@ -39,7 +38,7 @@ const EventsCalendar = function (props) {
     console.log(dateEvents);
     if (dateEvents.length) {
       dispatch(changeKenes(dateEvents[0].extendedProps.selectValue));
-      dispatch(setDateEvents(getDateEventsObj(dateEvents)));
+      dispatch(setDateEvents(getDateEventsObj(dateEvents)));     
       history.push({
         pathname: '/dateInfo',
         state: {

@@ -1,16 +1,17 @@
 const headerToolbar = {
-  start:'listYear,dayGridMonth',
+  start:'listYear,listMonth,dayGridMonth',
   center:'title',
   end:'today prev,next'
 };
 
 const buttonText ={
-  list:'רשימה שנתית',
+  listYear:'רשימה שנתית',
+  listMonth:'רשימה חודשית',
   month:'לוח שנה'
 };
 
 
 module.exports = {
   toolbarConfig:headerToolbar,
-  textConfig:buttonText
+  textConfig:buttonText,
 }
