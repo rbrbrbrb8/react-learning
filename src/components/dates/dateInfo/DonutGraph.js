@@ -4,7 +4,7 @@ import { Card, Grid } from '@material-ui/core';
 import Chart from 'react-apexcharts';
 const he = require('apexcharts/dist/locales/he.json');
 const DonutGraph = (props) => {
-  const {colorScheme} = props;
+  const {colorScheme,infoUnformatted} = props;
   const fixedColorScheme = [colorScheme[colorScheme.length-1],colorScheme[1],'#a6ada8']
   const options = {
     chart: {
@@ -12,13 +12,19 @@ const DonutGraph = (props) => {
       width:'100%',
       height:'100%',
       locales:[he],
-      defaultLocale:'he'
+      defaultLocale:'he',
+      animations:{
+        enabled:true,
+        dynamicAnimation:{
+          enabled:true
+        }
+      }
     },
     colors:fixedColorScheme,
     labels: ['מומלצים', 'לא מומלצים', 'אין ציון'],
     dataLabels: {
       enabled: true,
-      formatter: (val,opts) => (val/100)*total,
+      formatter: (val,opts) => Math.round((val/100)*total),
     },
     plotOptions: {
       pie: {
@@ -50,7 +56,8 @@ const DonutGraph = (props) => {
       direction: 'rtl'
     }
   };
-  const series = [40, 10, 2];
+  const dummySeries = [40, 10, 2];
+  const series = infoUnformatted? Object.values(infoUnformatted) : [];
   const total = series.reduce((prevVal,currentVal) => prevVal+currentVal,0);
   console.log(total);
   return (

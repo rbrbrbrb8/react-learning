@@ -26,9 +26,19 @@ const EventsCalendar = function (props) {
   }
   const getDateEventsObj = events => {
     return events.reduce((eventsObj, event) => {
-      eventsObj[event.extendedProps.selectValue] = {
+      const extendedProps = event.extendedProps;
+      const details = extendedProps.details;
+      eventsObj[extendedProps.selectValue] = {
         displayName: event.title,
-        colorScheme:event.extendedProps.colorScheme
+        colorScheme:extendedProps.colorScheme,
+        details:{
+          invited:details.invited || 0,
+          came:details.came || 0,
+          haveGrades:details.haveGrades || 0,
+          haveSheelon:details.haveSheelon || 0 //watch out for undefined details, can crash app
+        },
+        gradesData:extendedProps.gradesData,
+        recData:extendedProps.recData
       };
       return eventsObj;
     }, {});

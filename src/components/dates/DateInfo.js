@@ -8,7 +8,7 @@ import '../../css/dateInfo.css';
 import { FormControl, Select, InputLabel } from '@material-ui/core';
 import { useSelector, useDispatch } from 'react-redux';
 import {changeKenes} from '../../redux/ducks/currentEvent';
-import info from './dummyInfo/info';
+
 
 const DateInfo = (props) => {
   const getFromSessionStorage = key => {
@@ -18,7 +18,6 @@ const DateInfo = (props) => {
   const dispatch = useDispatch();
   const currentEvent = useSelector(state => ((Object.keys(state.currentEvent.currentEvent)).length ? state.currentEvent.currentEvent : getFromSessionStorage('currentEvent')));
   const dateEventsObj = useSelector(state => ((Object.keys(state.dateEvents.eventsData)).length ? state.dateEvents.eventsData : JSON.parse(getFromSessionStorage('dateEvents'))));
-  console.log(`current event: ${currentEvent}`);
   const handleCurrentEventChange = (event) => {
     const eventName = event.target.value;
     console.log(event.target.value);
@@ -52,14 +51,14 @@ const DateInfo = (props) => {
       <Grid container direction="row-reverse" spacing={2}>
         <Grid item container direction="column" xs={8}>
           <Grid item>
-            <InfoCardsRow info={info} colorScheme={dateEventsObj[currentEvent].colorScheme}></InfoCardsRow>
+            <InfoCardsRow infoUnformatted={dateEventsObj[currentEvent].details} colorScheme={dateEventsObj[currentEvent].colorScheme}></InfoCardsRow>
           </Grid>
           <Grid item>
-            <ColumnsGraph colorScheme={dateEventsObj[currentEvent].colorScheme}></ColumnsGraph>
+            <ColumnsGraph infoUnformatted={dateEventsObj[currentEvent].gradesData}colorScheme={dateEventsObj[currentEvent].colorScheme}></ColumnsGraph>
           </Grid>
         </Grid>
         <Grid item xs={4}>
-          <DonutGraph colorScheme={dateEventsObj[currentEvent].colorScheme}></DonutGraph>
+          <DonutGraph infoUnformatted={dateEventsObj[currentEvent].recData} colorScheme={dateEventsObj[currentEvent].colorScheme}></DonutGraph>
         </Grid>
       </Grid>
     </div>

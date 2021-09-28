@@ -2,11 +2,30 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Card, Grid } from '@material-ui/core';
 import Chart from 'react-apexcharts';
+const dummyCategories =[
+  ['לבדיקה'],
+  ['בדיק'],
+  ['מבדקון'],
+  ['צורת בדיקה'],
+  ['לבדוק'],
+  ['כמובן'],
+  ['בטוטאל', 'המקף', 'לבדיקת'],
+  ['סגנון', 'בדיקה'],
+  ['טסטינג'],
+  ['אנציקלופדי'],
+  ['רימון'],
+  ['בדיקה', 'סטיגמה'],
+  ['בדיקות', 'סטגימה'],
+  ['שנה', 'בדיקת'],
+  ['פריז'],
+  ['זהב"ם']
+];
+const dummyData = [26, 26, 18, 10, 0, 1, 20, 12, 7, 5, 10, 9, 11, 13, 3, 8];
 const he = require('apexcharts/dist/locales/he.json');
 const ColumnsGraph = (props) => {
-  const { colorScheme } = props;
+  const { colorScheme,infoUnformatted } = props;
   const series = [{
-    data: [26, 26, 18, 10, 0, 1, 20, 12, 7, 5, 10, 9, 11, 13, 3, 8]
+    data: infoUnformatted? Object.values(infoUnformatted) : []
   }];
   const options = {
     chart: {
@@ -25,24 +44,7 @@ const ColumnsGraph = (props) => {
       }
     },
     xaxis: {
-      categories: [
-        ['לבדיקה'],
-        ['בדיק'],
-        ['מבדקון'],
-        ['צורת בדיקה'],
-        ['לבדוק'],
-        ['כמובן'],
-        ['בטוטאל', 'המקף', 'לבדיקת'],
-        ['סגנון', 'בדיקה'],
-        ['טסטינג'],
-        ['אנציקלופדי'],
-        ['רימון'],
-        ['בדיקה', 'סטיגמה'],
-        ['בדיקות', 'סטגימה'],
-        ['שנה', 'בדיקת'],
-        ['פריז'],
-        ['זהב"ם']
-      ],
+      categories: infoUnformatted? Object.keys(infoUnformatted) : [],
       labels: {
         rotate: 0,
         style: {

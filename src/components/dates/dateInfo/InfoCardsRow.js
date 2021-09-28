@@ -1,17 +1,28 @@
 import React, { useState } from 'react';
 import { Card, CardContent, Grid, Typography } from '@material-ui/core';
+import { Beenhere, DoneAll, Dvr, Event, Grade, Assignment } from '@material-ui/icons';
 import { makeStyles } from '@material-ui/styles';
-
+import infoRowConfig from './infoRowConfig';
 
 
 const InfoCardsRow = (props) => {
-  const { info,colorScheme } = props;
+  const makeInfoRowArr = detailsObj => {
+    console.log(detailsObj)
+    const result = (Object.keys(detailsObj)).map(detailKey => ({
+      ...infoRowConfig[detailKey],
+      num:detailsObj[detailKey]
+    }));
+    console.log(result);
+    return result;
+  };
+  const { infoUnformatted,colorScheme } = props;
   const useStyles = makeStyles({
     colored:{
       color:colorScheme[0]
     }
   });
   const classes = useStyles();
+  const info = makeInfoRowArr(infoUnformatted);
   return (
     // <Link to="" className="single-date">
     <Grid item container spacing={2} direction="row-reverse">
@@ -31,7 +42,7 @@ const InfoCardsRow = (props) => {
                   </Grid>
                   <Grid item>
                     <Typography variant="subtitle1">
-                      {singleCardInfo.type}
+                      {singleCardInfo.title}
                     </Typography>
                   </Grid>
                 </Grid>
